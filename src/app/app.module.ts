@@ -7,6 +7,8 @@ import { MaterialNavComponent } from './material-nav/material-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule } from '@angular/material';
 import { MaterialDashboardComponent } from './material-dashboard/material-dashboard.component';
+import { AppRoutingModule } from './/app-routing.module';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { MaterialDashboardComponent } from './material-dashboard/material-dashbo
     MatListModule,
     MatGridListModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
