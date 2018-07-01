@@ -10,6 +10,7 @@ import { MaterialDashboardComponent } from './material-dashboard/material-dashbo
 import { AppRoutingModule } from './/app-routing.module';
 import { PlotlyModule } from 'angular-plotly.js';
 import { PlotlyExampleComponent } from './graphs/graph.component';
+import { IndicateurMacdComponent } from './indicateur-macd/indicateur-macd.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { PlotlyExampleComponent } from './graphs/graph.component';
     AppComponent,
     MaterialNavComponent,
     MaterialDashboardComponent,
-    PlotlyExampleComponent
+    PlotlyExampleComponent,
+    IndicateurMacdComponent
   ],
   imports: [
     BrowserModule,
