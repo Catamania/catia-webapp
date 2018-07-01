@@ -8,13 +8,16 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule } from '@angular/material';
 import { MaterialDashboardComponent } from './material-dashboard/material-dashboard.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { PlotlyModule } from 'angular-plotly.js';
+import { PlotlyExampleComponent } from './graphs/graph.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MaterialNavComponent,
-    MaterialDashboardComponent
+    MaterialDashboardComponent,
+    PlotlyExampleComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +31,7 @@ import { AppRoutingModule } from './/app-routing.module';
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
+    PlotlyModule,
     AppRoutingModule
   ],
   providers: [],
