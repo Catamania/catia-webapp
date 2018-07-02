@@ -26,15 +26,23 @@ export class IndicateurMacdComponent implements OnInit {
   getMacdData() {
     this.marketService.getMacdPlots()
       .subscribe((data: GraphPlot[][]) => {
-        this.macdData = [];
+        /**
+         * Conversion des tableaux de points en données de graphe pour plotly.
+         * On passe d'un tableau d'objets {x, y} à 2 tableaux x[], y[].
+         */
+        this.macdData = []; // reset des données de graphe
           data.forEach((element: GraphPlot[]) => {
             const graphData: GraphData = new GraphData();
-            graphData.x = element.map(item => item.x);
-            graphData.y = element.map(item => item.y);
+            graphData.x = element.map(item => item.x); // extraction de tous les champs "x" dans un tableau
+            graphData.y = element.map(item => item.y); // extraction de tous les champs "y" dans un tableau
             graphData.type = 'scatter';
 
             this.macdData.push(graphData);
           });
+
+          // TODO à revoir
+          this.macdData[0].name = 'MACD';
+          this.macdData[1].name = 'Signal';
       });
   }
 
