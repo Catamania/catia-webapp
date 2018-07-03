@@ -48,8 +48,8 @@ export class SignInComponent implements OnInit {
     })
     .then(jwt => {
       this.jsonWebToken = jwt;
-      this.web3Service.login(jwt);
-    });
+      this.web3Service.login(jwt.token);
+    }).then(() => this.updateButtonTitle(true));
   }
 
   onClickMe() {
@@ -57,6 +57,7 @@ export class SignInComponent implements OnInit {
       this.login();
     } else {
       this.web3Service.logout();
+      this.updateButtonTitle(false);
     }
   }
 }
