@@ -9,8 +9,8 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
 import { MaterialDashboardComponent } from './material-dashboard/material-dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PlotlyModule } from 'angular-plotly.js';
-import { PlotlyExampleComponent } from './graphs/graph.component';
 import { IndicateurMacdComponent } from './indicateur-macd/indicateur-macd.component';
+import { DonneesMarcheComponent } from './donnees-marche/donnees-marche.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 
 @NgModule({
@@ -18,8 +18,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
     AppComponent,
     MaterialNavComponent,
     MaterialDashboardComponent,
-    PlotlyExampleComponent,
     IndicateurMacdComponent,
+    DonneesMarcheComponent,
     SignInComponent
   ],
   imports: [
