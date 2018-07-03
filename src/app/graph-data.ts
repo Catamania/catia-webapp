@@ -7,3 +7,14 @@ export class GraphData {
   type: string;
   name: string;
 }
+
+export class GraphOHLCData {
+  x: Date[];
+  open: number[];
+  high: number[];
+  low: number[];
+  close: number[];
+  type: string;
+  xaxis: string;
+  yaxis: string;
+}
