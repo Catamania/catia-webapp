@@ -34,13 +34,14 @@ export class Web3Service {
   }
 
   logout() {
-    localStorage.setItem(jwtAuthKey, null);
+    localStorage.removeItem(jwtAuthKey);
   }
 
   getWalletAddress(): Promise<string> {
     return new Promise((resolve, reject) => {
       resolve(this.web3.eth.coinbase.toLowerCase());
-    });
+    })
+    .catch(error => window.alert('Erreur lors du chargement des informations de Metamask. Vérifiez que votre wallet est bien déverrouillé'));
   }
 
   handleSignMessage(publicAddress: string, nonce: string): Promise<any> {
