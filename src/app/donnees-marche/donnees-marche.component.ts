@@ -44,7 +44,7 @@ export class DonneesMarcheComponent implements OnInit {
         tmp.high = data.map(item => item[2]);
         tmp.low = data.map(item => item[3]);
         tmp.close = data.map(item => item[4]);
-        tmp.type = 'ohlc';
+        tmp.type = 'candlestick';
         this.donneesMarche.push(tmp);
         console.log(this.donneesMarche);
       });
