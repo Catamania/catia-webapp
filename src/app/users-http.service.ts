@@ -1,11 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { environment } from '../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-const apiHost = 'allstack.fr';
+const apiHost = environment.usersServiceUrl;
 // const apiHost: string = 'localhost';
 
 @Injectable({
@@ -20,8 +21,7 @@ export class UsersHttpService {
     }
     return this.http
       .get<any>(
-        `https://${apiHost}/slack-commands-server/users?wallet_address=${walletAddress}`,
-        // `http://${apiHost}:5001/users?wallet_address=${walletAddress}`,
+        `${apiHost}/slack-commands-server/users?wallet_address=${walletAddress}`,
         httpOptions
       )
       .toPromise();
