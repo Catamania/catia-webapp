@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  usersServiceUrl: 'https://allstack.fr'
+  usersServiceUrl: 'http://localhost:5001'
 };
 
 /*
