@@ -10,7 +10,8 @@ export class MaterialDashboardComponent {
     { title: 'Card 1', cols: 1, rows: 3 },
     { title: 'Card 2', cols: 1, rows: 1 },
     { title: 'Card 3', cols: 1, rows: 1 },
-    { title: 'Card 4', cols: 1, rows: 1 }
+    { title: 'Card 4', cols: 1, rows: 1 },
+    { title: 'Card 5', cols: 1, rows: 1 }
   ];
 
   graph1 = {

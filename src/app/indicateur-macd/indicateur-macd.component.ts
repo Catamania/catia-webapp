@@ -11,11 +11,22 @@ import { MarketService } from '../market.service';
 export class IndicateurMacdComponent implements OnInit {
   macdData: GraphData[];
   graphLayout: any;
+  graphConfig: any;
 
   constructor(private marketService: MarketService) {
-
+    this.graphConfig = {
+      responsive: true
+    };
     this.graphLayout = {
-      autosize: true
+      height: 300,
+      margin: {
+        l: 50,
+        r: 20,
+        b: 50,
+        t: 20,
+        pad: 0
+      },
+      showlegend: false
     };
   }
 
