@@ -25,7 +25,7 @@
     "@types/plotly.js": "^1.38.3",
     "angular-plotly.js": "^0.1.14",
     "core-js": "^2.5.4",
-    "plotly.js": "^1.38.3",
+    "plotly.js": "^1.41.3",
     "rxjs": "^6.0.0",
     "web3": "^0.20.5",
     "zone.js": "^0.8.26"
