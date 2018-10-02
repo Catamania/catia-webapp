@@ -2,7 +2,7 @@
   <mat-grid-list cols="12" rowHeight="215px">
 
     <!-- Card 1 : my wallet-->
-    <mat-grid-tile colspan="5" rowspan="1">
+    <mat-grid-tile colspan="4" rowspan="1">
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
@@ -17,13 +17,13 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-            <div>Card Content Here</div>
+            <app-wallet></app-wallet>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
 
-    <!-- Card 5 : suggestions IA-->
-    <mat-grid-tile colspan="7" rowspan="1">
+    <!-- Card 2 : suggestions IA-->
+    <mat-grid-tile colspan="4" rowspan="1">
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
@@ -42,7 +42,8 @@
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
-    <!-- Card 2 : Ordres-->
+
+    <!-- Card 3 : Ordres-->
     <mat-grid-tile colspan="4" rowspan="1">
      <mat-card class="dashboard-card">
        <mat-card-header>
@@ -63,7 +64,29 @@
      </mat-card>
    </mat-grid-tile>
 
-   <!-- Card 4 : OHLC-->
+  <!-- Card 4 : Compte Kraken -->
+  <mat-grid-tile colspan="4" rowspan="3">
+    <mat-card class="dashboard-card">
+      <mat-card-header>
+        <mat-card-title>
+          Mon compte Kraken
+          <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu" xPosition="before">
+            <button mat-menu-item>Expand</button>
+            <button mat-menu-item>Remove</button>
+          </mat-menu>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="dashboard-card-content">
+          <div>Card Content Here</div>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
+
+   <!-- Card 5 : Données du marché -->
    <mat-grid-tile colspan="8" rowspan="3">
     <mat-card class="dashboard-card">
       <mat-card-header>
@@ -81,27 +104,6 @@
       <mat-card-content class="dashboard-card-content">
           <app-donnees-marche></app-donnees-marche>
           <app-indicateur-macd></app-indicateur-macd>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-
-  <!-- Card 3 : Recommandation-->
-  <mat-grid-tile colspan="4" rowspan="2">
-    <mat-card class="dashboard-card">
-      <mat-card-header>
-        <mat-card-title>
-          Mon compte Kraken
-          <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-            <mat-icon>more_vert</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu" xPosition="before">
-            <button mat-menu-item>Expand</button>
-            <button mat-menu-item>Remove</button>
-          </mat-menu>
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="dashboard-card-content">
-          <div>Card Content Here</div>
       </mat-card-content>
     </mat-card>
   </mat-grid-tile>

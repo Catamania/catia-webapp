@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,6 +12,13 @@ import { PlotlyModule } from 'angular-plotly.js';
 import { IndicateurMacdComponent } from './indicateur-macd/indicateur-macd.component';
 import { DonneesMarcheComponent } from './donnees-marche/donnees-marche.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { WalletComponent } from './wallet/wallet.component';
+
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+
+// the second parameter 'fr' is optional
+registerLocaleData(localeFr, 'fr');
 
 @NgModule({
   declarations: [
@@ -20,7 +27,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
     MaterialDashboardComponent,
     IndicateurMacdComponent,
     DonneesMarcheComponent,
-    SignInComponent
+    SignInComponent,
+    WalletComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +46,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
     PlotlyModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ { provide: LOCALE_ID, useValue: 'fr' } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

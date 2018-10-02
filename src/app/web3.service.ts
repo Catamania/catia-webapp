@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as Web3 from 'web3';
+import { resolve } from 'url';
+
 
 declare let window: any;
 const jwtAuthKey = 'catia_jwt';
@@ -16,8 +18,12 @@ export class Web3Service {
       window.alert('Please install MetaMask first.');
       return;
     }
-    this.web3Provider = window.web3.currentProvider;
-    this.web3 = new Web3(this.web3Provider);
+
+    // this.web3Provider = window.web3.currentProvider;
+    // console.log("PROVIDER : ");
+    // console.log(this.web3Provider);
+    this.web3 = window.web3;
+    console.log("Provider : " + this.web3.currentProvider.constructor.name);
   }
 
   isLoggedIn(): boolean {
@@ -36,6 +42,18 @@ export class Web3Service {
   logout() {
     localStorage.removeItem(jwtAuthKey);
   }
+
+getEthAmount(address: string): Promise<Web3.BigNumber> {
+  return new Promise ((resolve, reject) => {
+    return this.web3.eth.getBalance(address, (error, result) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(this.web3.fromWei(result, 'ether'));
+      }
+    });
+  });
+}
 
   getWalletAddress(): Promise<string> {
     return new Promise((resolve, reject) => {
