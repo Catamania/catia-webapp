@@ -22,6 +22,12 @@ export class SignInComponent implements OnInit {
     }
   }
 
+  toggleLogIn(): void {
+    this.usersHttpService.toggleLog()
+    .then( logged => this.updateButtonTitle(logged));
+  }
+
+
   ngOnInit() {
     this.updateButtonTitle(this.usersHttpService.isLoggedIn());
   }

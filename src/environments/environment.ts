@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  usersServiceUrl: 'https://allstack.fr'
+  usersServiceUrl: 'https://allstack.fr/slack-commands-server'
 };
 
 /*

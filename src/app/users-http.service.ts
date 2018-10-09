@@ -94,6 +94,21 @@ export class UsersHttpService {
   }
 
   /**
+   * Inverse l'état loggé ou non du client, et renvoie le nouvel état
+   */
+  toggleLog(): Promise<boolean> {
+    if (this.isLoggedIn()) {
+      this.logout();
+      return Promise.resolve(false);
+    } else {
+      this.login()
+      .then (token => {
+        return Promise.resolve(true);
+      });
+    }
+  }
+
+  /**
    * Enregistre le token JWT fourni dans le localStorage
    * @param token token JWT
    */
