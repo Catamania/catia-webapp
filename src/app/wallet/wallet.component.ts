@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Web3Service } from '../web3.service';
+import { MarketService } from '../market.service';
 
 @Component({
   selector: 'app-wallet',
@@ -7,14 +8,13 @@ import { Web3Service } from '../web3.service';
   styleUrls: ['./wallet.component.css']
 })
 export class WalletComponent implements OnInit {
-   ethAmount: string;
+  ethAmount: string;
   eurAmount: number;
 
-
-  constructor(private web3Service: Web3Service) {
-
-    this.eurAmount = 534.887996;
-
+  constructor(
+    private web3Service: Web3Service,
+    private marketService: MarketService
+    ) {
   }
 
   /**
@@ -33,6 +33,9 @@ export class WalletComponent implements OnInit {
     .catch(error => {
       console.error(error);
     });
+
+    this.marketService.getTime()
+    .then(time => console.log(time));
   }
 
 }
