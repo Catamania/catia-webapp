@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialNavComponent } from './material-nav/material-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatButtonToggleModule } from '@angular/material';
 import { MaterialDashboardComponent } from './material-dashboard/material-dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PlotlyModule } from 'angular-plotly.js';
@@ -13,6 +13,8 @@ import { IndicateurMacdComponent } from './indicateur-macd/indicateur-macd.compo
 import { DonneesMarcheComponent } from './donnees-marche/donnees-marche.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { WalletComponent } from './wallet/wallet.component';
+import { GraphMatCardComponent } from './graph-mat-card/graph-mat-card.component';
+import { FormsModule } from '@angular/forms';
 
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
@@ -28,15 +30,18 @@ registerLocaleData(localeFr, 'fr');
     IndicateurMacdComponent,
     DonneesMarcheComponent,
     SignInComponent,
+    GraphMatCardComponent,
     WalletComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     LayoutModule,
+    FormsModule,
     HttpClientModule,
     MatToolbarModule,
     MatButtonModule,
+    MatButtonToggleModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule,
