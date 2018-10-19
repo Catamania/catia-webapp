@@ -44,7 +44,7 @@ export class IndicateurMacdComponent implements OnInit {
         this.macdData = []; // reset des données de graphe
           data.forEach((element: GraphPlot[]) => {
             const graphData: GraphData = new GraphData();
-            graphData.x = element.map(item => item.x); // extraction de tous les champs "x" dans un tableau
+            graphData.x = element.map(item => new Date(item.x)); // extraction de tous les champs "x" dans un tableau
             graphData.y = element.map(item => item.y); // extraction de tous les champs "y" dans un tableau
             graphData.type = 'scatter';
 

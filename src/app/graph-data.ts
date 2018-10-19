@@ -2,7 +2,7 @@
  * Classe pour modéliser les coordonnées x,y d'un point sur un graphe
  */
 export class GraphData {
-  x: number[];
+  x: Date[];
   y: number[];
   type: string;
   name: string;
