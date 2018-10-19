@@ -43,21 +43,11 @@ export class DonneesMarcheComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getMarketOHLCData();
+    this.marketService.getOHLC()
+    .then(data => {
+      this.donneesMarche[0] = new GraphOHLCData(data);
+    });
   }
 
-  getMarketOHLCData() {
-    this.marketService.getMarketOHLCPlots()
-      .subscribe((data: any[][]) => { // TODO typing
-        const tmp: GraphOHLCData = new GraphOHLCData();
-        tmp.x = data.map(item => new Date(item[0] as number * 1000));
-        tmp.open = data.map(item => item[1]);
-        tmp.high = data.map(item => item[2]);
-        tmp.low = data.map(item => item[3]);
-        tmp.close = data.map(item => item[4]);
-        tmp.type = 'candlestick';
-        this.donneesMarche.push(tmp);
-        console.log(this.donneesMarche);
-      });
-  }
+
 }

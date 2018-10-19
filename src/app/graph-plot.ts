@@ -6,13 +6,12 @@ export class GraphPlot {
   y: number;
 }
 
-export class GraphOHLCPlot {
-  time: number;
+export interface IOHLC {
+  date: number;
   open: number;
   high: number;
   low: number;
   close: number;
-  vwap: number;
   volume: number;
-  count: number;
+  adjusted: number;
 }
