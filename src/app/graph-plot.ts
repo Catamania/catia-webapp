@@ -1,9 +1,20 @@
 /**
  * Classe pour modéliser les coordonnées x,y d'un point sur un graphe
  */
-export class GraphPlot {
+export interface IGraphPlot {
   x: number;
   y: number;
+}
+
+export class MACD {
+  macd: IGraphPlot[];
+  signal: IGraphPlot[];
+
+  constructor(macd: IGraphPlot[], signal: IGraphPlot[]) {
+    this.macd = macd;
+    this.signal = signal;
+  }
+
 }
 
 export interface IOHLC {

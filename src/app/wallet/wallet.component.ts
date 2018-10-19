@@ -44,7 +44,6 @@ export class WalletComponent implements OnInit {
       this.eurAmount = (parseFloat(amount) * parseFloat(ticker[PAIR_ETH_EUR]['c'][0])).toString();
 
     })
-    // [TODO] 4. Récupération du montant correspondant en EUR
     .catch(error => {
       console.error(error);
     });

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GraphPlot } from '../graph-plot';
+import { IGraphPlot, MACD } from '../graph-plot';
 import { GraphData } from '../graph-data';
 import { MarketService } from '../market.service';
 
@@ -14,6 +14,7 @@ export class IndicateurMacdComponent implements OnInit {
   graphConfig: any;
 
   constructor(private marketService: MarketService) {
+    this.macdData = Array<GraphData>();
     this.graphConfig = {
       responsive: true
     };
@@ -31,30 +32,13 @@ export class IndicateurMacdComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getMacdData();
+    this.marketService.getMacd()
+    .then( macd => this.refreshMACDData(macd));
   }
 
-  getMacdData() {
-    this.marketService.getMacdPlots()
-      .subscribe((data: GraphPlot[][]) => {
-        /**
-         * Conversion des tableaux de points en données de graphe pour plotly.
-         * On passe d'un tableau d'objets {x, y} à 2 tableaux x[], y[].
-         */
-        this.macdData = []; // reset des données de graphe
-          data.forEach((element: GraphPlot[]) => {
-            const graphData: GraphData = new GraphData();
-            graphData.x = element.map(item => new Date(item.x)); // extraction de tous les champs "x" dans un tableau
-            graphData.y = element.map(item => item.y); // extraction de tous les champs "y" dans un tableau
-            graphData.type = 'scatter';
-
-            this.macdData.push(graphData);
-          });
-
-          // TODO à revoir
-          this.macdData[0].name = 'MACD';
-          this.macdData[1].name = 'Signal';
-      });
+  refreshMACDData(macd: MACD) {
+    this.macdData.push(new GraphData('MACD', macd.macd));
+    this.macdData.push(new GraphData('signal', macd.signal));
   }
 
 }

@@ -1,4 +1,4 @@
-import {IOHLC} from './graph-plot';
+import {IOHLC, IGraphPlot} from './graph-plot';
 /**
  * Classe pour modéliser les coordonnées x,y d'un point sur un graphe
  */
@@ -7,6 +7,14 @@ export class GraphData {
   y: number[];
   type: string;
   name: string;
+
+  constructor(name: string, plots: IGraphPlot[]) {
+    this.x = plots.map( plot => new Date(plot.x));
+    this.y = plots.map( plot => plot.y);
+    this.type = 'scatter';
+    this.name = name;
+  }
+
 }
 
 export class GraphOHLCData {
