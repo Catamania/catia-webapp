@@ -9,12 +9,23 @@ const ethBotUrl = environment.ethBotUrl;
 })
 export class MarketService {
   private publicAPI;
-
+  private privateAPI = null;
 
   constructor() {
     this.publicAPI = kraken();
 
+    console.log(environment.krakenSecret);
+
+  if (environment.krakenPrivateKey !== null && environment.krakenSecret !== null) {
+    const key: string = environment.krakenPrivateKey;
+    const secret: string = environment.krakenSecret;
+    this.privateAPI = kraken({
+      key: key,
+      secret: secret
+    });
   }
+}
+
   getTime(): Promise<any> {
     return this.publicAPI.call('Time');
   }
@@ -30,10 +41,6 @@ export class MarketService {
       }
     })
     .then (json => {
-
-      console.log('json');
-      console.log(json);
-
       const macd: IGraphPlot[] = json[0]['values'];
       const signal: IGraphPlot[] = json[1]['values'];
 
@@ -44,6 +51,16 @@ export class MarketService {
       return null;
     });
   }
+
+  getTradeBalance(): Promise<any> {
+    if (!this.privateAPI || this.privateAPI == null)  {
+      return Promise.reject('Api Privée non instanciée');
+    } else {
+      return this.privateAPI.call('Balance');
+    }
+  }
+
+
 
   getOHLC(): Promise<IOHLC[]> {
     const url = `${ethBotUrl}/OHLC?grain=5`;

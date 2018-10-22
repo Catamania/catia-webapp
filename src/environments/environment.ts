@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   usersServiceUrl: 'https://allstack.fr/slack-commands-server',
-  ethBotUrl: 'http://78.212.193.11:8182'
+  ethBotUrl: 'http://78.212.193.11:8182',
+  krakenPrivateKey: '<MY_PRIVATE_KEY>',
+  krakenSecret: '<MY_SECRET>'
 };
 
 /*
