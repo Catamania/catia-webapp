@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GraphPlot } from '../graph-plot';
 import { GraphOHLCData } from '../graph-data';
 import { MarketService } from '../market.service';
 
