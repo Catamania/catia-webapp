@@ -52,7 +52,7 @@ export class MarketService {
     });
   }
 
-  getTradeBalance(): Promise<any> {
+  getBalance(): Promise<any> {
     if (!this.privateAPI || this.privateAPI == null)  {
       return Promise.reject('Api Privée non instanciée');
     } else {
