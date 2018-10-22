@@ -77,14 +77,14 @@ export class UsersHttpService {
    * Renvoie le token d'authentification
    */
   getToken() {
-    return localStorage.getItem(jwtAuthKey);
+    return sessionStorage.getItem(jwtAuthKey);
   }
 
    /**
    * Vérifie si le client est authentifié. On cherche le token jwt, puis on vérifie sa validité
    */
   isLoggedIn(): boolean {
-    if (localStorage.getItem(jwtAuthKey) === undefined || localStorage.getItem(jwtAuthKey) == null) {
+    if (sessionStorage.getItem(jwtAuthKey) === undefined || sessionStorage.getItem(jwtAuthKey) == null) {
       return false;
     }  else {
       // TODO - vérifier l'expiration du token
@@ -108,18 +108,18 @@ export class UsersHttpService {
   }
 
   /**
-   * Enregistre le token JWT fourni dans le localStorage
+   * Enregistre le token JWT fourni dans le sessionStorage
    * @param token token JWT
    */
   saveToken(token: any) {
-    localStorage.setItem(jwtAuthKey, token);
+    sessionStorage.setItem(jwtAuthKey, token);
   }
 
   /**
-   * Supprime le token du localStorage
+   * Supprime le token du sessionStorage
    */
   logout() {
-    localStorage.removeItem(jwtAuthKey);
+    sessionStorage.removeItem(jwtAuthKey);
   }
 
 }
