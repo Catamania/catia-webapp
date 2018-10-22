@@ -19,8 +19,8 @@ export class DonneesMarcheComponent implements OnInit {
     this.graphLayout = {
       height: 300,
       margin: {
-        l: 50,
-        r: 20,
+        l: 30,
+        r: 0,
         b: 50,
         t: 20,
         pad: 0

@@ -21,8 +21,8 @@ export class IndicateurMacdComponent implements OnInit {
     this.graphLayout = {
       height: 300,
       margin: {
-        l: 50,
-        r: 20,
+        l: 40,
+        r: 0,
         b: 50,
         t: 20,
         pad: 0
