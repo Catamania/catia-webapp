@@ -1,9 +1,8 @@
-.params-button {
-    position: absolute;
-    top: 5px;
-    right: 10px;
-  }
-
 .mat-card-actions, .mat-card-content, .mat-card-subtitle, .mat-card-title {
     margin-bottom: 4px;
 }
+
+
+.dashboard-card-content {
+    text-align: center;
+  }

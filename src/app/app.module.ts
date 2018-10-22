@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialNavComponent } from './material-nav/material-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatButtonToggleModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatButtonToggleModule, MatSlider, MatSliderModule } from '@angular/material';
 import { MaterialDashboardComponent } from './material-dashboard/material-dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PlotlyModule } from 'angular-plotly.js';
@@ -45,6 +45,7 @@ registerLocaleData(localeFr, 'fr');
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    MatSliderModule,
     MatGridListModule,
     MatCardModule,
     MatMenuModule,

@@ -1,29 +1,21 @@
-<!-- Card 4 : graphiques-->
-  <mat-card-header>
-    <mat-card-title>
-      Graphiques
-      <mat-button-toggle
-          class="params-button"
-          [checked]="showParams" 
-          (change)="showParams = $event.source.checked">
-        Paramètres
-      </mat-button-toggle>
-    </mat-card-title>
-  </mat-card-header>
-  <mat-card-content class="dashboard-card-content">
-    <ng-template [ngIf]="!showParams">
+<mat-card-header>
+  <mat-card-title>
+    Graphiques
+  </mat-card-title>
+</mat-card-header>
+<mat-card-content class="dashboard-card-content">
+  <mat-grid-list cols="12" rowHeight="300px">
+    <mat-grid-tile colspan="4" rowspan="2">
+      
+      <mat-slider thumbLabel [displayWith]="grainAdapterLabel" tickInterval="1" min="0" max="12">
+      </mat-slider>
+      
+    </mat-grid-tile>
+    <mat-grid-tile colspan="8" rowspan="1">
       <app-donnees-marche></app-donnees-marche>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="8" rowspan="1">
       <app-indicateur-macd></app-indicateur-macd>
-    </ng-template>
-    <ng-template [ngIf]="showParams">
- 
-        blablzabfkazbfmlkazbmfzbflmkhzabf
-        blablzabfkazbfmlkazbmfzbflmkhzabf
-        blablzabfkazbfmlkazbmfzbflmkhzabf
-        blablzabfkazbfmlkazbmfzbflmkhzabf
-          <!-- <label for="grain">Grain</label> -->
-          <!-- <input type="text" class="form-control" id="grain"
-                 [(ngModel)]="grain" name="grain" [ngModelOptions]="{standalone: true}"/> -->
-        
-    </ng-template>
-  </mat-card-content>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card-content>
