@@ -14,28 +14,26 @@ export class DonneesMarcheComponent implements OnInit {
 
   constructor(private marketService: MarketService) {
     this.graphConfig = {
-      responsive: true
+      responsive: true,
+      staticPlot: true
     };
     this.graphLayout = {
-      height: 300,
+      height: 290,
       margin: {
-        l: 30,
+        l: 40,
         r: 0,
-        b: 50,
-        t: 20,
+        b: 40,
+        t: 0,
         pad: 0
       },
-      dragmode: 'zoom',
       showlegend: false,
       xaxis: {
-        autorange: true,
         rangeslider: {
          visible: false
         },
         type: 'date'
       },
       yaxis: {
-        autorange: true,
         type: 'linear'
       }
     };

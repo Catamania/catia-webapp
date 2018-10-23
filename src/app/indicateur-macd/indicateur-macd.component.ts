@@ -16,15 +16,16 @@ export class IndicateurMacdComponent implements OnInit {
   constructor(private marketService: MarketService) {
     this.macdData = Array<GraphData>();
     this.graphConfig = {
-      responsive: true
+      responsive: true,
+      staticPlot: true
     };
     this.graphLayout = {
-      height: 300,
+      height: 290,
       margin: {
         l: 40,
         r: 0,
         b: 50,
-        t: 20,
+        t: 10,
         pad: 0
       },
       showlegend: false

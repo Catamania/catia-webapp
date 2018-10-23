@@ -8,7 +8,20 @@
         </mat-card-title>
       </mat-card-header>
       <mat-card-content class="dashboard-card-content">
-        <mat-slider thumbLabel [displayWith]="grainAdapterLabel" tickInterval="1" min="0" max="12"></mat-slider>
+        <label>Grain : </label>
+        <mat-slider thumbLabel [displayWith]="grainAdapterLabel"
+              step="1" min="0" max="12" [(ngModel)]="grain">
+        </mat-slider>
+        <br>
+        <mat-form-field>
+          <mat-select [(value)]="currentAsset" required>
+            <mat-option *ngFor="let asset of tradableAssets"
+              [value]="asset.key">{{asset.key}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-divider></mat-divider>
+        <br>
       </mat-card-content>
     </mat-card>
   </mat-grid-tile>

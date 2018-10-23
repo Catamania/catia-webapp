@@ -1,3 +1,7 @@
 .graph-logo {
     background-image: url('/assets/graph-logo.png');
   }
+
+.graph-responsive{
+    position: absolute;
+}
