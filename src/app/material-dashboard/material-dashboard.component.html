@@ -2,32 +2,24 @@
   <mat-grid-list cols="12" rowHeight="215px">
 
     <!-- Card 1 : my wallet-->
-    <mat-grid-tile colspan="4" rowspan="1">
+    <mat-grid-tile colspan="3" rowspan="1">
       <mat-card class="dashboard-card">
         <app-wallet></app-wallet>
       </mat-card>
     </mat-grid-tile>
 
     <!-- Card 2 : compte Kraken-->
-    <mat-grid-tile colspan="4" rowspan="1">
+    <mat-grid-tile colspan="3" rowspan="1">
       <mat-card class="dashboard-card">
           <app-kraken-account></app-kraken-account>
       </mat-card>
-
     </mat-grid-tile>
 
     <!-- Card 3 : Ordres-->
-    <mat-grid-tile colspan="4" rowspan="1">
+    <mat-grid-tile colspan="6" rowspan="1">
      <mat-card class="dashboard-card">
-       <mat-card-header>
-         <mat-card-title>
-           Ordres
-         </mat-card-title>
-       </mat-card-header>
-       <mat-card-content class="dashboard-card-content">
-           <div>Card Content Here</div>
-       </mat-card-content>
-     </mat-card>
+       <app-market-trades></app-market-trades>
+       </mat-card>
    </mat-grid-tile>
   </mat-grid-list>
 

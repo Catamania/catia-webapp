@@ -9,3 +9,7 @@
 .kraken-logo {
   background-image: url('/assets/kraken-logo.png');
 }
+
+.mat-list[dense] .mat-list-item {
+  height: 25px;
+}

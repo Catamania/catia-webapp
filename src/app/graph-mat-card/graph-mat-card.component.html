@@ -3,9 +3,13 @@
 <mat-grid-tile colspan="4" rowspan="3">
     <mat-card class="dashboard-card">
       <mat-card-header>
+          <div mat-card-avatar class="logo catia-logo"></div>
         <mat-card-title>
-            Bots IA
+            Bots - IA
         </mat-card-title>
+        <mat-card-subtitle>
+          Configuration et suggestions de l'IA
+        </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content class="dashboard-card-content">
         <mat-slider thumbLabel [displayWith]="grainAdapterLabel" tickInterval="1" min="0" max="12"></mat-slider>
@@ -17,7 +21,7 @@
   <mat-grid-tile colspan="8" rowspan="3">
     <mat-card class="dashboard-card">
       <mat-card-header>
-          <div mat-card-avatar class="logo graph-logo"></div>
+        <div mat-card-avatar class="logo graph-logo"></div>
         <mat-card-title>
           Evolution du marché
         </mat-card-title>
