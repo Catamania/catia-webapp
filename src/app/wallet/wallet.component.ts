@@ -8,7 +8,7 @@ const PAIR_ETH_EUR = 'XETHZEUR';
 @Component({
   selector: 'app-wallet',
   templateUrl: './wallet.component.html',
-  styleUrls: ['./wallet.component.css']
+  styleUrls: ['../material-dashboard/material-dashboard.component.css', './wallet.component.css']
 })
 export class WalletComponent implements OnInit {
   ethAmount: string;

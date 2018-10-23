@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-graph-mat-card',
   templateUrl: './graph-mat-card.component.html',
-  styleUrls: ['./graph-mat-card.component.css']
+  styleUrls: ['../material-dashboard/material-dashboard.component.css', './graph-mat-card.component.css']
 })
 export class GraphMatCardComponent {
   private static grainValues: number[] = [60, 180, 300, 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400, 259200, 604800];

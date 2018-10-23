@@ -5,3 +5,7 @@
 .total {
   margin-top: 15px;
 }
+
+.kraken-logo {
+  background-image: url('/assets/kraken-logo.png');
+}

@@ -21,3 +21,8 @@
 .mat-card-actions, .mat-card-content, .mat-card-subtitle, .mat-card-title {
   margin-bottom: 8px;
 }
+
+.logo {
+  background-size: cover;
+  margin-right: 5px;
+}

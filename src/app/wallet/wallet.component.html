@@ -1,2 +1,13 @@
-<h1> {{ethAmount | currency:'ETH':'symbol':'1.3-5' }}</h1>
-<div>{{eurAmount | currency:'EUR':'symbol':'1.2-2' }}</div>
+<mat-card-header>
+    <div mat-card-avatar class="logo metamask-logo"></div>
+    <mat-card-title>
+      Metamask
+    </mat-card-title>
+    <mat-card-subtitle>
+      Mon portefeuille
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="dashboard-card-content">
+      <h1> {{ethAmount | currency:'ETH':'symbol':'1.3-5' }}</h1>
+      <div>{{eurAmount | currency:'EUR':'symbol':'1.2-2' }}</div>
+  </mat-card-content>
