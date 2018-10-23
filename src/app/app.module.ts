@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { KrakenAccountComponent } from './kraken-account/kraken-account.component';
+import { MarketTradesComponent } from './market-trades/market-trades.component';
 
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
@@ -34,7 +35,8 @@ registerLocaleData(localeFr, 'fr');
     SignInComponent,
     GraphMatCardComponent,
     WalletComponent,
-    KrakenAccountComponent
+    KrakenAccountComponent,
+    MarketTradesComponent
   ],
   imports: [
     BrowserModule,

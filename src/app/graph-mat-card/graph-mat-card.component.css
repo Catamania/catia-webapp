@@ -2,6 +2,6 @@
     background-image: url('/assets/graph-logo.png');
   }
 
-.graph-responsive{
-    position: absolute;
+.catia-logo {
+  background-image: url('/assets/catia-logo.png');
 }
