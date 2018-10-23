@@ -1,7 +1,26 @@
-.mat-card-actions, .mat-card-content, .mat-card-subtitle, .mat-card-title {
-    margin-bottom: 4px;
+.grid-container {
+  margin: 5px;
 }
 
+.dashboard-card {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+ }
+
+.dashboard-card-content {
+  text-align: center;
+}
+
+.mat-card {
+  padding: 12px;
+}
+
+.mat-card-actions, .mat-card-content, .mat-card-subtitle, .mat-card-title {
+  margin-bottom: 8px;
+}
 
 .dashboard-card-content {
     text-align: center;

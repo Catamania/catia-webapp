@@ -60,6 +60,13 @@ export class MarketService {
     }
   }
 
+  getTradeBalance(): Promise<any> {
+    if (!this.privateAPI || this.privateAPI == null)  {
+      return Promise.reject('Api Privée non instanciée');
+    } else {
+      return this.privateAPI.call('TradeBalance', {asset: 'ZEUR'});
+    }
+  }
 
 
   getOHLC(): Promise<IOHLC[]> {

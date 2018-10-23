@@ -1,5 +1,18 @@
-<ul>
-  <li *ngFor="let currency of currencies">
-    {{currency.symbol}} : {{currency.balance}}
-  </li>
-</ul>
+<mat-card-header>
+    <mat-card-title>
+      Mon compte Kraken
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="dashboard-card-content">
+      <mat-list dense>
+          <mat-list-item *ngFor="let currency of currencies">
+            <strong>{{currency.symbol}} : </strong> <span class="text-right">{{currency.balance}}</span>
+          </mat-list-item>
+        </mat-list>
+        <mat-divider></mat-divider>
+        <div class='total'>
+          <strong>Total : </strong> <span class="text-right">{{totalBalance}} <strong>€</strong></span>
+        </div>
+  </mat-card-content>
+
+
