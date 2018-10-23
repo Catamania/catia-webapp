@@ -15,13 +15,13 @@ export class DonneesMarcheComponent implements OnInit {
   constructor(private marketService: MarketService) {
     this.graphConfig = {
       responsive: true,
-      staticPlot: true
+      displayModeBar: false
     };
     this.graphLayout = {
       height: 290,
       margin: {
         l: 40,
-        r: 0,
+        r: 10,
         b: 40,
         t: 0,
         pad: 0

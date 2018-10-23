@@ -17,13 +17,13 @@ export class IndicateurMacdComponent implements OnInit {
     this.macdData = Array<GraphData>();
     this.graphConfig = {
       responsive: true,
-      staticPlot: true
+      displayModeBar: false
     };
     this.graphLayout = {
       height: 290,
       margin: {
         l: 40,
-        r: 0,
+        r: 10,
         b: 50,
         t: 10,
         pad: 0
