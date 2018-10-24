@@ -23,9 +23,30 @@
               [value]="asset.key">{{asset.key}}</mat-option>
           </mat-select>
         </mat-form-field>
+        <button mat-button (click)="createBot()">Obtenir bot</button>
+        <button mat-button (click)="deleteBot()">Supprimer bot</button>
         <br>
         <mat-divider></mat-divider>
         <br>
+        <mat-list role="list">
+          <mat-list-item role="listitem" *ngFor="let bot of bots; let i = index">
+            <button mat-button (click)="selectBot(i)">
+              {{bot.currencyPair}} @{{bot.intervalle}}
+            </button>
+          </mat-list-item>
+        </mat-list>
+        <br>
+        <mat-divider></mat-divider>
+        <br>
+        <mat-card>
+          <button mat-button (click)="refreshAlert()">Rafraîchir</button>
+          <p *ngIf="currentBot === undefined">
+            Aucun bot sélectionné !</p>
+          <p *ngIf="currentBot !== undefined && currentBot.lastAlert === null">
+            Pas encore d'alerte pour le bot sélectionné.</p>
+          <p *ngIf="currentBot !== undefined && currentBot.lastAlert !== null">
+            {{currentBot.lastAlert.isBullish}} {{currentBot.lastAlert.acceleration}} {{currentBot.lastAlert.date}}</p>
+        </mat-card>
       </mat-card-content>
     </mat-card>
   </mat-grid-tile>
