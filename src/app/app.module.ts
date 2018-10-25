@@ -14,7 +14,7 @@ import { IndicateurMacdComponent } from './indicateur-macd/indicateur-macd.compo
 import { DonneesMarcheComponent } from './donnees-marche/donnees-marche.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { WalletComponent } from './wallet/wallet.component';
-import { GraphMatCardComponent } from './graph-mat-card/graph-mat-card.component';
+import { GraphMatCardComponent, IterablePipe } from './graph-mat-card/graph-mat-card.component';
 import { FormsModule } from '@angular/forms';
 
 import { registerLocaleData } from '@angular/common';
@@ -36,7 +36,8 @@ registerLocaleData(localeFr, 'fr');
     GraphMatCardComponent,
     WalletComponent,
     KrakenAccountComponent,
-    MarketTradesComponent
+    MarketTradesComponent,
+    IterablePipe
   ],
   imports: [
     BrowserModule,

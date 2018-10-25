@@ -11,40 +11,46 @@
           Configuration et suggestions de l'IA
         </mat-card-subtitle>
       </mat-card-header>
+
       <mat-card-content class="dashboard-card-content">
         <label>Grain : </label>
         <mat-slider thumbLabel [displayWith]="grainAdapterLabel"
-              step="1" min="0" max="12" [(ngModel)]="grain">
+              step="1" min="0" max="8" [(ngModel)]="grain">
         </mat-slider>
         <br>
         <mat-form-field>
-          <mat-select [(value)]="currentAsset" required>
+          <mat-select [(value)]="currentAsset" placeholder='Pair of currencies'>
             <mat-option *ngFor="let asset of tradableAssets"
               [value]="asset.key">{{asset.key}}</mat-option>
           </mat-select>
         </mat-form-field>
+        <br>
         <button mat-button (click)="createBot()">Obtenir bot</button>
-        <button mat-button (click)="deleteBot()">Supprimer bot</button>
+
         <br>
         <mat-divider></mat-divider>
         <br>
-        <mat-list role="list">
-          <mat-list-item role="listitem" *ngFor="let bot of bots; let i = index">
-            <button mat-button (click)="selectBot(i)">
-              {{bot.currencyPair}} @{{bot.intervalle}}
-            </button>
+
+        <mat-list dense role="list">
+          <mat-list-item role="listitem" *ngFor="let bot of bots | iterable">
+              <button mat-button (click)="selectBot(bot.key)">
+                {{bot.value.currencyPair}} @{{bot.value.intervalle}}
+              </button>
+              <button mat-icon-button (click)="deleteBot(bot.key)" color="warn"><mat-icon>delete</mat-icon></button>
           </mat-list-item>
         </mat-list>
+
         <br>
         <mat-divider></mat-divider>
         <br>
+
         <mat-card>
           <button mat-button (click)="refreshAlert()">Rafraîchir</button>
-          <p *ngIf="currentBot === undefined">
+          <p *ngIf="currentBot._id === -1">
             Aucun bot sélectionné !</p>
-          <p *ngIf="currentBot !== undefined && currentBot.lastAlert === null">
+          <p *ngIf="currentBot._id >= 0 && (currentBot.lastAlert === null || currentBot.lastAlert === '')">
             Pas encore d'alerte pour le bot sélectionné.</p>
-          <p *ngIf="currentBot !== undefined && currentBot.lastAlert !== null">
+          <p *ngIf="currentBot._id >= 0 && currentBot.lastAlert !== null && currentBot.lastAlert.length > 0">
             {{currentBot.lastAlert.isBullish}} {{currentBot.lastAlert.acceleration}} {{currentBot.lastAlert.date}}</p>
         </mat-card>
       </mat-card-content>
