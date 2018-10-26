@@ -1,6 +1,5 @@
-<mat-grid-list cols="12" rowHeight="215px">
-<!-- carte paramétrage -->
-<mat-grid-tile colspan="4" rowspan="3">
+<mat-grid-list cols="12" rowHeight="218px">
+  <mat-grid-tile colspan="3" rowspan="3">
     <mat-card class="dashboard-card">
       <mat-card-header>
           <div mat-card-avatar class="logo catia-logo"></div>
@@ -12,53 +11,63 @@
         </mat-card-subtitle>
       </mat-card-header>
 
-      <mat-card-content class="dashboard-card-content">
-        <label>Grain : </label>
-        <mat-slider thumbLabel [displayWith]="grainAdapterLabel"
-              step="1" min="0" max="8" [(ngModel)]="grain">
-        </mat-slider>
+      <mat-card-content>
         <br>
-        <mat-form-field>
-          <mat-select [(value)]="currentAsset" placeholder='Pair of currencies'>
-            <mat-option *ngFor="let asset of tradableAssets"
-              [value]="asset.key">{{asset.key}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <br>
-        <button mat-button (click)="createBot()">Obtenir bot</button>
+        <mat-card class="cerberus">
+          <mat-slider thumbLabel [displayWith]="grainAdapterLabel"
+                step="1" min="0" max="7" [(ngModel)]="grain">
+          </mat-slider>
+          <mat-form-field>
+            <mat-select [(value)]="currentAsset" placeholder='Paires'>
+              <mat-option *ngFor="let asset of tradableAssets"
+                [value]="asset.key">{{asset.key}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-icon-button (click)="createBot()" color="primary"><mat-icon>add_box</mat-icon></button>
+        </mat-card>
 
-        <br>
-        <mat-divider></mat-divider>
-        <br>
+        <div class="mat-elevation-z1 bots-table">
+          <table mat-table [dataSource]="botsView">
+            <ng-container matColumnDef="pair">
+              <mat-header-cell *matHeaderCellDef> Paires </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.value.currencyPair}} </mat-cell>
+            </ng-container>
 
-        <mat-list dense role="list">
-          <mat-list-item role="listitem" *ngFor="let bot of bots | iterable">
-              <button mat-button (click)="selectBot(bot.key)">
-                {{bot.value.currencyPair}} @{{bot.value.intervalle}}
-              </button>
-              <button mat-icon-button (click)="deleteBot(bot.key)" color="warn"><mat-icon>delete</mat-icon></button>
-          </mat-list-item>
-        </mat-list>
+            <ng-container matColumnDef="grain">
+              <mat-header-cell *matHeaderCellDef> Grain </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.value.intervalle}} </mat-cell>
+            </ng-container>
 
-        <br>
-        <mat-divider></mat-divider>
-        <br>
+            <ng-container matColumnDef="delete">
+              <mat-header-cell *matHeaderCellDef> <button mat-icon-button (click)="refreshBots()" color="primary"><mat-icon>refresh</mat-icon></button> </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <button mat-icon-button (click)="deleteBot(element.key)" color="warn"><mat-icon>delete</mat-icon></button>
+              </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="['pair', 'grain', 'delete']"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: ['pair', 'grain', 'delete'];" (click)="selectBot(row.key)"
+            ></mat-row>
+            <!-- [ngClass]="{'mat-button-focus-overlay': row.key == currentBot._id, 'mat-button-ripple': row.key == currentBot._id}" -->
+          </table>
+        </div>
 
         <mat-card>
-          <button mat-button (click)="refreshAlert()">Rafraîchir</button>
+          <button mat-icon-button (click)="refreshAlert()" color="primary"><mat-icon>refresh</mat-icon></button>
           <p *ngIf="currentBot._id === -1">
             Aucun bot sélectionné !</p>
-          <p *ngIf="currentBot._id >= 0 && (currentBot.lastAlert === null || currentBot.lastAlert === '')">
+          <p *ngIf="currentBot._id >= 0 && currentBot.lastAlert === null">
             Pas encore d'alerte pour le bot sélectionné.</p>
-          <p *ngIf="currentBot._id >= 0 && currentBot.lastAlert !== null && currentBot.lastAlert.length > 0">
-            {{currentBot.lastAlert.isBullish}} {{currentBot.lastAlert.acceleration}} {{currentBot.lastAlert.date}}</p>
+          <p *ngIf="currentBot._id >= 0 && currentBot.lastAlert !== null">
+            {{currentBot.lastAlert.isBullish}} {{currentBot.lastAlert.acceleration}} {{currentBot.lastAlert.date}}
+          </p>
         </mat-card>
       </mat-card-content>
     </mat-card>
   </mat-grid-tile>
 
   <!-- carte graphes -->
-  <mat-grid-tile colspan="8" rowspan="3">
+  <mat-grid-tile colspan="9" rowspan="3">
     <mat-card class="dashboard-card">
       <mat-card-header>
         <div mat-card-avatar class="logo graph-logo"></div>
@@ -70,8 +79,8 @@
         </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content class="dashboard-card-content">
-        <app-donnees-marche></app-donnees-marche>
-        <app-indicateur-macd></app-indicateur-macd>
+        <app-donnees-marche #ohlcComponent></app-donnees-marche>
+        <app-indicateur-macd #macdComponent></app-indicateur-macd>
       </mat-card-content>
     </mat-card>
   </mat-grid-tile>

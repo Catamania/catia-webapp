@@ -30,26 +30,30 @@ export class MarketService {
     return this.publicAPI.call('Time');
   }
 
-  getMacd(): Promise<MACD> {
-    const url = `${ethBotUrl}/MACD?grain=5`;
-    return fetch(url)
-    .then (response => {
-      if (response.status === 200) {
-        return response.json();
-      } else {
-        throw new Error('Exception : ' + response.status + '\n' + response.statusText);
-      }
-    })
-    .then (json => {
-      const macd: IGraphPlot[] = json[0]['values'];
-      const signal: IGraphPlot[] = json[1]['values'];
+  getMacd(grain: number): Promise<MACD> {
+    if (grain > 0) {
+      const url = `${ethBotUrl}/MACD?grain=${grain}`;
+      return fetch(url)
+      .then (response => {
+        if (response.status === 200) {
+          return response.json();
+        } else {
+          throw new Error('Exception : ' + response.status + '\n' + response.statusText);
+        }
+      })
+      .then (json => {
+        const macd: IGraphPlot[] = json[0]['values'];
+        const signal: IGraphPlot[] = json[1]['values'];
 
-      return new MACD(macd, signal);
-    })
-    .catch(error => {
-      console.error(error);
-      return null;
-    });
+        return new MACD(macd, signal);
+      })
+      .catch(error => {
+        console.error(error);
+        return null;
+      });
+    } else {
+      return Promise.resolve(new MACD([], []));
+    }
   }
 
   getBalance(): Promise<any> {
@@ -69,26 +73,29 @@ export class MarketService {
   }
 
 
-  getOHLC(): Promise<IOHLC[]> {
-    const url = `${ethBotUrl}/OHLC?grain=5`;
-    return fetch(url)
-    .then (response => {
-      if (response.status === 200) {
-        return response.json();
-      } else {
-        throw new Error('Exception : ' + response.status + '\n' + response.statusText);
-      }
-    })
-    .then ( (json) => {
-
-      let data: IOHLC[];
-      data = json[0]['values'];
-      return data;
-    })
-    .catch(error => {
-      console.error(error);
-      return null;
-    });
+  getOHLC(grain: number): Promise<IOHLC[]> {
+    if (grain > 0) {
+      const url = `${ethBotUrl}/OHLC?grain=${grain}`;
+      return fetch(url)
+      .then (response => {
+        if (response.status === 200) {
+          return response.json();
+        } else {
+          throw new Error('Exception : ' + response.status + '\n' + response.statusText);
+        }
+      })
+      .then ( (json) => {
+        let data: IOHLC[];
+        data = json[0]['values'];
+        return data;
+      })
+      .catch(error => {
+        console.error(error);
+        return null;
+      });
+    } else {
+      return Promise.resolve([]);
+    }
   }
 
   /**

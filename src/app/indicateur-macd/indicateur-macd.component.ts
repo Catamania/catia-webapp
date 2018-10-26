@@ -8,7 +8,7 @@ import { MarketService } from '../market.service';
   templateUrl: './indicateur-macd.component.html',
   styleUrls: ['./indicateur-macd.component.css']
 })
-export class IndicateurMacdComponent implements OnInit {
+export class IndicateurMacdComponent {
   macdData: GraphData[];
   graphLayout: any;
   graphConfig: any;
@@ -32,14 +32,14 @@ export class IndicateurMacdComponent implements OnInit {
     };
   }
 
-  ngOnInit() {
-    this.marketService.getMacd()
-    .then( macd => this.refreshMACDData(macd));
-  }
-
-  refreshMACDData(macd: MACD) {
-    this.macdData.push(new GraphData('MACD', macd.macd));
-    this.macdData.push(new GraphData('signal', macd.signal));
+  refresh(grain: number) {
+    this.marketService.getMacd(grain)
+    .then(data => {
+      const res = [];
+      res.push(new GraphData('MACD', data.macd));
+      res.push(new GraphData('signal', data.signal));
+      this.macdData = res;
+    });
   }
 
 }

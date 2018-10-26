@@ -5,3 +5,50 @@
 .catia-logo {
   background-image: url('/assets/catia-logo.png');
 }
+
+.bots-table > table {
+  width: 100%;
+}
+
+.cerberus {
+  display: flex;                  /* establish flex container */
+  flex-direction: row;            /* default value; can be omitted */
+  flex-wrap: nowrap;              /* default value; can be omitted */
+  justify-content: space-between; /* switched from default (flex-start, see below) */
+}
+
+.cerberus > mat-slider {
+  margin-top: 6px;
+  min-width: 100px;
+  width: 100%;
+  max-width: 200px;
+}
+
+.cerberus > button {
+  margin-top: 8px;
+}
+
+.cerberus > mat-form-field {
+  margin-top: 2px;
+  max-width: 130px;
+  min-width: 100px;
+}
+
+.bots-table {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  max-height: 350px;
+  margin-bottom: 3px;
+}
+
+mat-cell{
+  display:flex !important;
+  justify-content:center !important;
+  
+}
+
+mat-header-cell {
+  display:flex;
+  justify-content:center;
+}

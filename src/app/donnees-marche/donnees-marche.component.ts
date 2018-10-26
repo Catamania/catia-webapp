@@ -7,7 +7,7 @@ import { MarketService } from '../market.service';
   templateUrl: './donnees-marche.component.html',
   styleUrls: ['./donnees-marche.component.css']
 })
-export class DonneesMarcheComponent implements OnInit {
+export class DonneesMarcheComponent {
   donneesMarche: GraphOHLCData[] = [];
   graphLayout: any;
   graphConfig: any;
@@ -39,8 +39,8 @@ export class DonneesMarcheComponent implements OnInit {
     };
   }
 
-  ngOnInit() {
-    this.marketService.getOHLC()
+  refresh(grain: number) {
+    this.marketService.getOHLC(grain)
     .then(data => {
       this.donneesMarche[0] = new GraphOHLCData(data);
     });
