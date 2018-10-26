@@ -14,7 +14,7 @@
       <mat-card-content>
         <br>
         <mat-card class="cerberus">
-          <mat-slider thumbLabel [displayWith]="grainAdapterLabel"
+          <mat-slider thumbLabel [displayWith]="grainAdapterLabel" tickInterval="1"
                 step="1" min="0" max="7" [(ngModel)]="grain">
           </mat-slider>
           <mat-form-field>
@@ -23,7 +23,7 @@
                 [value]="asset.key">{{asset.key}}</mat-option>
             </mat-select>
           </mat-form-field>
-          <button mat-icon-button (click)="createBot()" color="primary"><mat-icon>add_box</mat-icon></button>
+          <button mat-icon-button (click)="createBot()" color="primary"><mat-icon>add_circle</mat-icon></button>
         </mat-card>
 
         <div class="mat-elevation-z1 bots-table">
@@ -35,7 +35,7 @@
 
             <ng-container matColumnDef="grain">
               <mat-header-cell *matHeaderCellDef> Grain </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.value.intervalle}} </mat-cell>
+              <mat-cell *matCellDef="let element"> {{displayTime(element.value.intervalle)}} </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="delete">
@@ -53,14 +53,20 @@
         </div>
 
         <mat-card>
-          <button mat-icon-button (click)="refreshAlert()" color="primary"><mat-icon>refresh</mat-icon></button>
-          <p *ngIf="currentBot._id === -1">
-            Aucun bot sélectionné !</p>
-          <p *ngIf="currentBot._id >= 0 && currentBot.lastAlert === null">
-            Pas encore d'alerte pour le bot sélectionné.</p>
-          <p *ngIf="currentBot._id >= 0 && currentBot.lastAlert !== null">
-            {{currentBot.lastAlert.isBullish}} {{currentBot.lastAlert.acceleration}} {{currentBot.lastAlert.date}}
-          </p>
+          <mat-card-header>
+            Dernière alerte de CatIA <button mat-icon-button (click)="refreshAlert()" color="primary"><mat-icon>refresh</mat-icon></button>
+          </mat-card-header>
+          <mat-card-content>
+            <p *ngIf="currentBot._id === -1" style="font-style: italic;">
+              Vous n'avez sélectionné aucun bot.</p>
+            <p *ngIf="currentBot._id >= 0 && currentBot.lastAlert === null" style="font-style: italic;">
+              Aucune alerte n'a encore été lancée pour le bot sélectionné.</p>
+            <p *ngIf="currentBot._id >= 0 && currentBot.lastAlert !== null" style="font-style: italic;">
+              <mat-icon *ngIf="currentBot.lastAlert.isBullish" color="primary">arrow_upward</mat-icon>
+              <mat-icon *ngIf="!currentBot.lastAlert.isBullish" color="warn">arrow_downward</mat-icon>
+              le {{displayDate(currentBot.lastAlert.date)}}
+            </p>
+          </mat-card-content>
         </mat-card>
       </mat-card-content>
     </mat-card>

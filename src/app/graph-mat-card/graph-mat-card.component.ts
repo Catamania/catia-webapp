@@ -2,6 +2,8 @@ import { Component, AfterViewInit, Pipe, PipeTransform, ViewChild } from '@angul
 import { MarketService } from '../market.service';
 import { BotService } from '../bot.service';
 import { MatTableDataSource } from '@angular/material';
+import * as moment from 'moment';
+moment.locale('fr');
 
 export class Bot {
   _id: number;
@@ -154,6 +156,16 @@ export class GraphMatCardComponent implements AfterViewInit {
     } else {
       return GraphMatCardComponent.grainValues[Math.round(value)];
     }
+  }
+
+  displayTime(timeInMinutes: string): string {
+    const duration = moment.duration(parseInt(timeInMinutes, 10), 'minutes');
+    return duration.humanize();
+  }
+
+  displayDate(date: string): string {
+    const humanDate = moment(date);
+    return humanDate.format('D/M/YYYY à HH[h]mm');
   }
 }
 
