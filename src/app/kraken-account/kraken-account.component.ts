@@ -8,8 +8,8 @@ import { CurrencyBalance } from '../currencyBalance';
   styleUrls: ['../material-dashboard/material-dashboard.component.css', './kraken-account.component.css']
 })
 export class KrakenAccountComponent implements OnInit {
-  private currencies: CurrencyBalance[];
-  private totalBalance: string;
+  currencies: CurrencyBalance[];
+  totalBalance: string;
 
   constructor(private marketService: MarketService) {
     this.currencies = [];

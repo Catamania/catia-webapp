@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialNavComponent } from './material-nav/material-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatButtonToggleModule, MatSlider, MatSliderModule, MatFormFieldModule, MatOptionModule, MatSelectModule, MatPaginatorModule, MatTableModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatButtonToggleModule, MatSlider, MatSliderModule, MatFormFieldModule, MatOptionModule, MatSelectModule, MatPaginatorModule, MatTableModule, MatInputModule } from '@angular/material';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { MaterialDashboardComponent } from './material-dashboard/material-dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,7 +15,7 @@ import { DonneesMarcheComponent } from './donnees-marche/donnees-marche.componen
 import { SignInComponent } from './sign-in/sign-in.component';
 import { WalletComponent } from './wallet/wallet.component';
 import { GraphMatCardComponent, IterablePipe } from './graph-mat-card/graph-mat-card.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
@@ -44,6 +44,8 @@ registerLocaleData(localeFr, 'fr');
     BrowserAnimationsModule,
     LayoutModule,
     FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
     HttpClientModule,
     MatToolbarModule,
     MatOptionModule,

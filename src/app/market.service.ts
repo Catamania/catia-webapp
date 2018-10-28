@@ -72,6 +72,22 @@ export class MarketService {
     }
   }
 
+  trade(pair: string, type: string, price: number, volume: number, orderType?: string) {
+    if (!this.privateAPI || this.privateAPI == null)  {
+      return Promise.reject('Api Privée non instanciée');
+    } else {
+      if (orderType === undefined || orderType === null) {
+        orderType = 'limit';
+      }
+      return this.privateAPI.call('AddOrder', {
+        pair: pair,
+        type: type,
+        ordertype: orderType,
+        price: price,
+        validate: true // FIXME test
+      });
+    }
+  }
 
   getOHLC(grain: number): Promise<IOHLC[]> {
     if (grain > 0) {
@@ -96,6 +112,14 @@ export class MarketService {
     } else {
       return Promise.resolve([]);
     }
+  }
+
+  getOrderBook(pair: string, count?: number): Promise<any> {
+    if (count === undefined || count <= 0) {
+      count = 5;
+    }
+    return this.publicAPI.call('Depth', {pair: pair, count: count})
+      .then(data => data[pair]);
   }
 
   /**

@@ -47,7 +47,16 @@
 mat-cell{
   display:flex !important;
   justify-content:center !important;
-  
+}
+
+mat-header-row {
+  max-height: 45px !important;
+  min-height: 30px !important;
+}
+
+mat-row {
+  max-height: 40px !important;
+  min-height: 25px !important;
 }
 
 mat-header-cell {
