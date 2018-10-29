@@ -8,17 +8,17 @@
   </mat-card-subtitle>
 </mat-card-header>
 <mat-card-content>
-  <mat-grid-list cols="16" rowHeight="190px" style="top: -30px;">
+  <mat-grid-list cols="16" rowHeight="190px" style="top: -50px;">
     <mat-grid-tile colspan="6" class="market-order-container">
       <form>
         <mat-form-field class="market-amount-input">
-          <input matInput type="number" placeholder="Volume" [(value)]="volume">
+          <input matInput type="number" placeholder="Volume" [(ngModel)]="volume" required name="volume">
         </mat-form-field> 
-        <button mat-button color="primary" (click)="buy()">Acheter</button> <br>
+        <button mat-button color="primary" (click)="buy()" [disabled]="checkTrade()">Acheter</button> <br>
         <mat-form-field class="market-amount-input">
-          <input matInput type="number" placeholder="Prix" [(value)]="price">
+          <input matInput type="number" placeholder="Prix" [(ngModel)]="price" required name="price">
         </mat-form-field>
-        <button mat-button color="accent" (click)="sell()">Vendre</button>
+        <button mat-button color="accent" (click)="sell()" [disabled]="checkTrade()">Vendre</button>
       </form>
     </mat-grid-tile>
 
@@ -26,29 +26,30 @@
       <div class="orders-table">
         <mat-table [dataSource]="orders">
           <ng-container matColumnDef="volumeAsks">
-            <mat-header-cell *matHeaderCellDef> Volume </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.ask.volume}} </mat-cell>
+            <mat-header-cell *matHeaderCellDef style="border-right: 1px solid rgba(0, 0, 0, 0.12);"> Volume </mat-header-cell>
+            <mat-cell *matCellDef="let element" style="border-right: 1px solid rgba(0, 0, 0, 0.12);"> {{element.ask.volume}} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="priceAsks">
-            <mat-header-cell *matHeaderCellDef> Prix </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.ask.price}} </mat-cell>
+            <mat-header-cell *matHeaderCellDef style="border-left: 1px solid rgba(0, 0, 0, 0.12); border-right: 1px solid rgba(0, 0, 0, 0.25);"> Prix </mat-header-cell>
+            <mat-cell *matCellDef="let element" style="border-left: 1px solid rgba(0, 0, 0, 0.12); border-right: 1px solid rgba(0, 0, 0, 0.25);"> {{element.ask.price}} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="priceBids">
-            <mat-header-cell *matHeaderCellDef> Prix </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.bid.price}} </mat-cell>
+            <mat-header-cell *matHeaderCellDef style="border-left: 1px solid rgba(0, 0, 0, 0.25); border-right: 1px solid rgba(0, 0, 0, 0.12);"> Prix </mat-header-cell>
+            <mat-cell *matCellDef="let element" style="border-left: 1px solid rgba(0, 0, 0, 0.25); border-right: 1px solid rgba(0, 0, 0, 0.12);"> {{element.bid.price}} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="volumeBids">
-            <mat-header-cell *matHeaderCellDef> Volume </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.bid.volume}} </mat-cell>
+            <mat-header-cell *matHeaderCellDef style="border-left: 1px solid rgba(0, 0, 0, 0.12);"> Volume </mat-header-cell>
+            <mat-cell *matCellDef="let element" style="border-left: 1px solid rgba(0, 0, 0, 0.12);"> {{element.bid.volume}} </mat-cell>
           </ng-container>
 
           <div *matHeaderRowDef="['volumeAsks', 'priceAsks', 'priceBids', 'volumeBids']; sticky: true">
             <div class="mat-header-row header-group-row">
-              <div class="mat-header-cell header-group" role="columnheader" style="flex: 2; font-weight: bold">Ordres de vente</div>
-              <div class="mat-header-cell header-group" role="columnheader" style="flex: 2; font-weight: bold">Ordres d'achat</div>
+              <button mat-mini-fab (click)="refreshOrderBook()" color="primary" class="refresh-orders-button"><mat-icon>refresh</mat-icon></button>
+              <div class="mat-header-cell header-group" role="columnheader" style="border-right: 1px solid rgba(0, 0, 0, 0.25); border-bottom: 1px solid rgba(0, 0, 0, 0.20)">Ordres de vente</div>
+              <div class="mat-header-cell header-group" role="columnheader" style="border-left: 1px solid rgba(0, 0, 0, 0.25); border-bottom: 1px solid rgba(0, 0, 0, 0.20)">Ordres d'achat</div>
             </div>
             <mat-header-row></mat-header-row>
           </div>

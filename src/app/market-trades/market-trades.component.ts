@@ -36,7 +36,7 @@ export class MarketTradesComponent implements AfterViewInit {
   }
 
   refreshOrderBook() {
-    this.marketService.getOrderBook(this.pair, 4)
+    this.marketService.getOrderBook(this.pair)
     .then(data => {
       const asks: Order[] = data.asks.map(order => ({
         price: order[0],
@@ -56,13 +56,23 @@ export class MarketTradesComponent implements AfterViewInit {
     });
   }
 
+  checkTrade(): boolean {
+    return this.price !== undefined && this.volume !== undefined && this.price > 0 && this.volume > 0;
+  }
+
   buy() {
-    this.marketService.trade(this.pair, 'buy', this.price, this.volume)
-    .then(data => console.log(data));
+    console.log(this.price + ' ' + this.volume);
+    if (this.checkTrade()) {
+      this.marketService.trade(this.pair, 'buy', this.price, this.volume)
+      .then(data => console.log(data));
+    }
   }
 
   sell() {
-    this.marketService.trade(this.pair, 'sell', this.price, this.volume)
-    .then(data => console.log(data));
+    console.log(this.price + ' ' + this.volume);
+    if (this.checkTrade()) {
+      this.marketService.trade(this.pair, 'sell', this.price, this.volume)
+      .then(data => console.log(data));
+    }
   }
 }

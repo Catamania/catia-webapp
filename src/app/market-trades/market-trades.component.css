@@ -10,7 +10,12 @@
   margin-bottom: 3px;
   width: 100%;
   position: absolute;
-  top: -10px;
+  top: 0px;
+}
+
+.market-order-container {
+  margin-top: 40px;
+  max-height: 150px;
 }
 
 .mat-header-cell, .mat-cell {
@@ -27,11 +32,24 @@
 .header-group {
     display: flex;
     align-items: center;
+    flex: 2;
+    font-weight: bold;
+    font-size: 13px;
+    padding-left: 15%;
+}
+
+.refresh-orders-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .market-amount-input {
-  max-width: 100px;
-  min-width: 70px;
+  max-width: 90px;
+  min-width: 60px;
   margin-right: 15px;
 }
 

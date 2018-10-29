@@ -116,7 +116,7 @@ export class MarketService {
 
   getOrderBook(pair: string, count?: number): Promise<any> {
     if (count === undefined || count <= 0) {
-      count = 5;
+      count = 8;
     }
     return this.publicAPI.call('Depth', {pair: pair, count: count})
       .then(data => data[pair]);
