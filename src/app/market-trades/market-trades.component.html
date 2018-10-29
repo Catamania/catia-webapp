@@ -8,7 +8,7 @@
   </mat-card-subtitle>
 </mat-card-header>
 <mat-card-content>
-  <mat-grid-list cols="16" rowHeight="150px">
+  <mat-grid-list cols="16" rowHeight="190px" style="top: -30px;">
     <mat-grid-tile colspan="6" class="market-order-container">
       <form>
         <mat-form-field class="market-amount-input">
@@ -16,7 +16,7 @@
         </mat-form-field> 
         <button mat-button color="primary" (click)="buy()">Acheter</button> <br>
         <mat-form-field class="market-amount-input">
-          <input matInput type="number" placeholder="Price" [(value)]="price">
+          <input matInput type="number" placeholder="Prix" [(value)]="price">
         </mat-form-field>
         <button mat-button color="accent" (click)="sell()">Vendre</button>
       </form>
@@ -24,7 +24,7 @@
 
     <mat-grid-tile colspan="10">
       <div class="orders-table">
-        <table mat-table [dataSource]="orders">
+        <mat-table [dataSource]="orders">
           <ng-container matColumnDef="volumeAsks">
             <mat-header-cell *matHeaderCellDef> Volume </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.ask.volume}} </mat-cell>
@@ -45,10 +45,16 @@
             <mat-cell *matCellDef="let element"> {{element.bid.volume}} </mat-cell>
           </ng-container>
 
-          <mat-header-row *matHeaderRowDef="['volumeAsks', 'priceAsks', 'priceBids', 'volumeBids']"></mat-header-row>
+          <div *matHeaderRowDef="['volumeAsks', 'priceAsks', 'priceBids', 'volumeBids']; sticky: true">
+            <div class="mat-header-row header-group-row">
+              <div class="mat-header-cell header-group" role="columnheader" style="flex: 2; font-weight: bold">Ordres de vente</div>
+              <div class="mat-header-cell header-group" role="columnheader" style="flex: 2; font-weight: bold">Ordres d'achat</div>
+            </div>
+            <mat-header-row></mat-header-row>
+          </div>
           <mat-row *matRowDef="let row; columns: ['volumeAsks', 'priceAsks', 'priceBids', 'volumeBids'];"></mat-row>
           <!-- [ngClass]="{'mat-button-focus-overlay': row.key == currentBot._id, 'mat-button-ripple': row.key == currentBot._id}" -->
-        </table>
+        </mat-table>
       </div>
     </mat-grid-tile>
   </mat-grid-list>

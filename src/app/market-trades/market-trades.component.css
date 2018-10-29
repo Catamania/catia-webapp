@@ -6,11 +6,27 @@
   display: flex;
   flex-direction: column;
   overflow: auto;
-  max-height: 150px;
+  max-height: 190px;
   margin-bottom: 3px;
   width: 100%;
   position: absolute;
   top: -10px;
+}
+
+.mat-header-cell, .mat-cell {
+  padding: 0 10px; 
+}
+
+.header-group-row {
+  border: none;
+  align-items: stretch;
+  display: flex;
+  min-height: 30px;
+}
+
+.header-group {
+    display: flex;
+    align-items: center;
 }
 
 .market-amount-input {
