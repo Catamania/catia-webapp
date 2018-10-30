@@ -46,9 +46,7 @@
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="['pair', 'grain', 'delete']"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: ['pair', 'grain', 'delete'];" (click)="selectBot(row.key)"
-            ></mat-row>
-            <!-- [ngClass]="{'mat-button-focus-overlay': row.key == currentBot._id, 'mat-button-ripple': row.key == currentBot._id}" -->
+            <mat-row *matRowDef="let row; columns: ['pair', 'grain', 'delete'];" (click)="selectBot(row.key)" [ngClass]="{'highlight': row.key === currentBot._id}"></mat-row>
           </table>
         </div>
 
