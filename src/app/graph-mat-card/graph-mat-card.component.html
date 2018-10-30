@@ -55,8 +55,9 @@
         <mat-card>
           <mat-card-header>
             <mat-card-title>
-              Dernière alerte de CatIA <button mat-icon-button (click)="refreshAlert()" color="primary" class="refresh-alert-button"><mat-icon>refresh</mat-icon></button>
+              Dernière alerte de CatIA
             </mat-card-title>
+            <button mat-icon-button (click)="refreshAlert()" color="primary" class="refresh-alert-button"><mat-icon>refresh</mat-icon></button>
           </mat-card-header>
           <mat-card-content>
             <p *ngIf="currentBot._id === -1" style="font-style: italic;">

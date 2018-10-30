@@ -10,6 +10,13 @@
   background-image: url('/assets/kraken-logo.png');
 }
 
+
+.refresh-balances-button {
+  position: relative;
+  right: 10px;
+  margin-left: auto;
+}
+
 .mat-list[dense] .mat-list-item {
   height: 25px;
 }

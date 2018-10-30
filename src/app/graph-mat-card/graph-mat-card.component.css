@@ -18,6 +18,10 @@
 }
 
 .refresh-alert-button {
+  position: relative;
+  right: 10%;
+  top: -10px;
+  margin-left: auto;
 }
 
 .cerberus > mat-slider {

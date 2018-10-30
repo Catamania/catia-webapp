@@ -17,15 +17,21 @@ export class KrakenAccountComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.refreshBalances();
+  }
+
+  refreshBalances() {
     this.marketService.getBalance()
     .then( currencies => {
+      const res = [];
       for (let key in currencies) {
-        let balance = currencies[key];
-        if (balance != '0') {
-          let currency = new CurrencyBalance(key, currencies[key]);
-          this.currencies.push(currency);
+        const balance = currencies[key];
+        if (balance !== '0') {
+          const currency = new CurrencyBalance(key, currencies[key]);
+          res.push(currency);
         }
      }
+     this.currencies = res;
     })
     .catch(error => console.error(error));
 
