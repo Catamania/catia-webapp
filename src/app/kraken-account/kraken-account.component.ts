@@ -26,7 +26,7 @@ export class KrakenAccountComponent implements OnInit {
       const res = [];
       for (let key in currencies) {
         const balance = currencies[key];
-        if (balance !== '0') {
+        if (balance != '0') {
           const currency = new CurrencyBalance(key, currencies[key]);
           res.push(currency);
         }

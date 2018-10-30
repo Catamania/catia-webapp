@@ -18,7 +18,7 @@
 }
 
 .highlight{
-  background: rgb(228, 221, 227);
+  background: #E1F0FA;
 }
 
 .refresh-alert-button {
@@ -70,6 +70,23 @@ mat-row {
   min-height: 25px !important;
   cursor: pointer;
 }
+
+
+.highlight{
+  background: #E1F0FA;
+}
+
+mat-row:hover {
+  background: #F5FAFC;
+}
+
+mat-row:hover.highlight {
+  background: #CCE0ED;
+}
+
+
+
+
 
 mat-header-cell {
   display:flex;

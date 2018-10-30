@@ -12,13 +12,13 @@
     <mat-grid-tile colspan="6" class="market-order-container">
       <form>
         <mat-form-field class="market-amount-input">
-          <input matInput type="number" placeholder="Volume" [(ngModel)]="volume" required name="volume">
-        </mat-form-field> 
-        <button mat-button color="primary" (click)="buy()" [disabled]="checkTrade()">Acheter</button> <br>
-        <mat-form-field class="market-amount-input">
-          <input matInput type="number" placeholder="Prix" [(ngModel)]="price" required name="price">
+          <input matInput type="number" min="0" placeholder="Volume" [(ngModel)]="volume" required name="volume">
         </mat-form-field>
-        <button mat-button color="accent" (click)="sell()" [disabled]="checkTrade()">Vendre</button>
+        <button mat-button color="primary"  (click)="buy()" [disabled]="!checkTrade()">Acheter</button> <br>
+        <mat-form-field class="market-amount-input">
+          <input matInput type="number" min="0" placeholder="Prix" [(ngModel)]="price" required name="price">
+        </mat-form-field>
+        <button mat-button color="accent" (click)="sell()" [disabled]="!checkTrade()">Vendre</button>
       </form>
     </mat-grid-tile>
 
