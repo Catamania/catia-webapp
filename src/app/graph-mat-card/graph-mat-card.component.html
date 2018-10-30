@@ -62,10 +62,13 @@
               Vous n'avez sélectionné aucun bot.</p>
             <p *ngIf="currentBot._id >= 0 && currentBot.lastAlert === null" style="font-style: italic;">
               Aucune alerte n'a encore été lancée pour le bot sélectionné.</p>
-            <p *ngIf="currentBot._id >= 0 && currentBot.lastAlert !== null" style="font-style: italic;">
-              <mat-icon *ngIf="currentBot.lastAlert.isBullish" color="primary">arrow_upward</mat-icon>
-              <mat-icon *ngIf="!currentBot.lastAlert.isBullish" color="warn">arrow_downward</mat-icon>
-              le {{displayDate(currentBot.lastAlert.date)}}
+            <p *ngIf="currentBot._id >= 0 && currentBot.lastAlert !== null && currentBot.lastAlert.isBullish" style="font-style: italic;">
+              <mat-icon *ngIf="currentBot.lastAlert.isBullish" color="primary" matTooltip="Tendance à la hausse" class="tendancy-icon">arrow_upward</mat-icon>
+              Suggestion d' <strong style="font-weight: 500">achat</strong> le {{displayDate(currentBot.lastAlert.date)}}
+            </p>
+            <p *ngIf="currentBot._id >= 0 && currentBot.lastAlert !== null && !currentBot.lastAlert.isBullish" style="font-style: italic;">
+              <mat-icon *ngIf="!currentBot.lastAlert.isBullish" color="warn" matTooltip="Tendance à la baisse" class="tendancy-icon">arrow_downward</mat-icon>
+              Suggestion de <strong style="font-weight: 500">vente</strong> le {{displayDate(currentBot.lastAlert.date)}}
             </p>
           </mat-card-content>
         </mat-card>

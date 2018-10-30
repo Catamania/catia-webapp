@@ -21,6 +21,13 @@
   background: #E1F0FA;
 }
 
+.tendancy-icon {
+  position: relative;
+  top: 5px;
+  left: 2px;
+  margin-right: 5px;
+}
+
 .refresh-alert-button {
   position: relative;
   right: 10%;

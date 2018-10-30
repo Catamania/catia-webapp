@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialNavComponent } from './material-nav/material-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatButtonToggleModule, MatSlider, MatSliderModule, MatFormFieldModule, MatOptionModule, MatSelectModule, MatPaginatorModule, MatTableModule, MatInputModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatButtonToggleModule, MatSlider, MatSliderModule, MatFormFieldModule, MatOptionModule, MatSelectModule, MatPaginatorModule, MatTableModule, MatInputModule, MatTooltipModule } from '@angular/material';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { MaterialDashboardComponent } from './material-dashboard/material-dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -48,6 +48,7 @@ registerLocaleData(localeFr, 'fr');
     MatInputModule,
     HttpClientModule,
     MatToolbarModule,
+    MatTooltipModule,
     MatOptionModule,
     MatPaginatorModule,
     MatTableModule,
